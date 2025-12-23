@@ -1,0 +1,7 @@
+{
+  "name": "Copy of BloodLife MVP",
+  "description": "A comprehensive frontend-only Blood Bank Management System with glassmorphism UI, real-time matching, and persistent storage using localStorage.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
