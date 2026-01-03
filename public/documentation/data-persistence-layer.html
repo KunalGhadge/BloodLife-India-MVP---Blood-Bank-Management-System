@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. Data Persistence - BloodLife India</title>
+    <link rel="stylesheet" href="docs.css">
+</head>
+
+<body>
+    <aside>
+        <h1>BLOODLIFE INDIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Back to Index</a></li>
+                <li><a href="architecture-overview.html">04. Architecture Overview</a></li>
+                <li><a href="data-persistence-layer.html" class="active">05. Data Persistence</a></li>
+                <li><a href="matching-heuristics.html">06. Blood Matching Logic</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="doc-content">
+            <h2>05. How We Save Your Data</h2>
+            <p>One of BloodLife's unique features is its <strong>Local Persistence</strong>. Unlike traditional apps
+                that send everything to a server, BloodLife saves your donors, blood requests, and matches directly on
+                your device.</p>
+
+            <div class="jargon-heavy"
+                style="font-family: var(--font-sans); border-left-color: #10b981; background: #ecfdf5; color: #065f46;">
+                Technical term: <strong>localStorage</strong>. It's a key-value storage system built into every modern
+                web browser.
+            </div>
+
+            <h3>Why Local Storage?</h3>
+            <p>By using your browser's local storage, we achieve three things:</p>
+            <ul>
+                <li><strong>Privacy:</strong> Your data never leaves your computer unless you explicitly choose to
+                    export or sync it.</li>
+                <li><strong>Speed:</strong> Saving and loading data happens almost instantly since there's no "server"
+                    to talk to.</li>
+                <li><strong>Reliability:</strong> You can use the app without an internet connection once it's loaded.
+                </li>
+            </ul>
+
+            <h3>Managing the Data Shards</h3>
+            <p>We use a custom utility called <code>localDb.ts</code> to manage this storage. It handles:</p>
+            <ol>
+                <li><strong>Saving (SetItem):</strong> Converts your donors and requests into a "String" format and
+                    stores them.</li>
+                <li><strong>Loading (GetItem):</strong> Reads the data back and turns it into clean TypeScript objects
+                    your app can use.</li>
+            </ol>
+
+            <h3>Safety First</h3>
+            <p>While local storage is great, it's tied to your browser. If you clear your browser's cache or switch
+                devices, the data will be gone. We recommend <strong>regularly exporting your data</strong> or using our
+                upcoming cloud-sync feature for permanent safety.</p>
+        </section>
+    </main>
+</body>
+
+</html>

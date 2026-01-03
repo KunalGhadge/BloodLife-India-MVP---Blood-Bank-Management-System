@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13. Data Validation - BloodLife India</title>
+    <link rel="stylesheet" href="docs.css">
+</head>
+
+<body>
+    <aside>
+        <h1>BLOODLIFE INDIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Back to Index</a></li>
+                <li><a href="animation-kinematics.html">12. Animations</a></li>
+                <li><a href="validation-protocols.html" class="active">13. Data Validation</a></li>
+                <li><a href="error-propagation.html">14. Error Handling</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="doc-content">
+            <h2>13. Ensuring Data Integrity</h2>
+            <p>In a healthcare-related application, "bad data" can have serious consequences. Our validation system
+                ensures that every piece of information entered into BloodLife is accurate, formatted correctly, and
+                safe to use.</p>
+
+            <div class="jargon-heavy"
+                style="font-family: var(--font-sans); border-left-color: #22c55e; background: #f0fdf4; color: #166534;">
+                Pro Concept: <strong>Schema Validation</strong>. We define a set of rules (a "schema") that data must
+                follow before it's saved.
+            </div>
+
+            <h3>Types of Validation</h3>
+            <ul>
+                <li><strong>Format Checks:</strong> Ensures email addresses look like emails, and phone numbers contain
+                    valid digits.</li>
+                <li><strong>Medical Validation:</strong> Keeps blood groups restricted to the valid types (e.g., A+,
+                    AB-, O+).</li>
+                <li><strong>Mandatory Fields:</strong> Prevents "empty" donors or requests from being saved.</li>
+            </ul>
+
+            <h3>Real-Time Feedback</h3>
+            <p>The system validates data *as you type*. If you make a mistake (like entering a future date for a donor's
+                birthday), the system immediately highlights the error and explains how to fix it.</p>
+
+            <h3>TypeScript Protection</h3>
+            <p>During development, <strong>TypeScript</strong> acts as a static shield. It prevents developers from
+                accidentally passing the wrong type of data (like sending a "Number" where a "Name" should be) at the
+                code level.</p>
+        </section>
+    </main>
+</body>
+
+</html>

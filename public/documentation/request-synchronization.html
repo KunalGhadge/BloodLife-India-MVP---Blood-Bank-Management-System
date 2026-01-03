@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09. Request Management - BloodLife India</title>
+    <link rel="stylesheet" href="docs.css">
+</head>
+
+<body>
+    <aside>
+        <h1>BLOODLIFE INDIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Back to Index</a></li>
+                <li><a href="donor-onboarding-nexus.html">08. Donor Management</a></li>
+                <li><a href="request-synchronization.html" class="active">09. Request Management</a></li>
+                <li><a href="ui-rendering-engine.html">10. UI & Rendering</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="doc-content">
+            <h2>09. Handling Blood Requests</h2>
+            <p>The Request Management system handles the urgent needs of hospitals and patients. It’s designed to ensure
+                that no request goes unnoticed and that the most critical cases are handled first.</p>
+
+            <div class="jargon-heavy"
+                style="font-family: var(--font-sans); border-left-color: #3b82f6; background: #eff6ff; color: #1e40af;">
+                Key Mechanism: <strong>Urgency Scaling</strong>. We categorize requests based on how quickly the blood
+                is needed (e.g., Emergency vs. Routine).
+            </div>
+
+            <h3>Creating a Request</h3>
+            <p>A request includes several critical pieces of information:</p>
+            <ul>
+                <li><strong>Recipient Information:</strong> Who needs the blood and what is their blood type?</li>
+                <li><strong>Quantity:</strong> How many units are required?</li>
+                <li><strong>Urgency:</strong> Is this an immediate emergency (critical) or can it wait (routine)?</li>
+                <li><strong>Location:</strong> Where should the blood be delivered?</li>
+            </ul>
+
+            <h3>The Fulfillment Queue</h3>
+            <p>Once a request is created, it enters the system's "Request List." From here, admins can:</p>
+            <ol>
+                <li><strong>Find Matches:</strong> Use the <strong>MatchFinder</strong> to see compatible donors.</li>
+                <li><strong>Assign Units:</strong> Link units from the <strong>Inventory</strong> to specific requests.
+                </li>
+                <li><strong>Track Status:</strong> Mark requests as "Pending," "Partially Fulfilled," or "Completed."
+                </li>
+            </ol>
+
+            <h3>Synchronizing Requests</h3>
+            <p>Since BloodLife is local-first, we use a sophisticated state manager to ensure that if multiple people
+                are working on the same device, the request list stays up-to-date and consistent.</p>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20. Testing & Verification - BloodLife India</title>
+    <link rel="stylesheet" href="docs.css">
+</head>
+
+<body>
+    <aside>
+        <h1>BLOODLIFE INDIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Back to Index</a></li>
+                <li><a href="visualization-heuristics.html">19. Data Visualization</a></li>
+                <li><a href="verification-methodology.html" class="active">20. Testing & Verification</a></li>
+                <li><a href="deployment-pipeline.html">21. Deployment Guide</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="doc-content">
+            <h2>20. Ensuring Quality and Reliability</h2>
+            <p>Before any piece of code is released, it goes through a rigorous testing process. We want to make sure
+                that the "MatchFinder" never fails and that donor data is always handled correctly.</p>
+
+            <div class="jargon-heavy"
+                style="font-family: var(--font-sans); border-left-color: #22c55e; background: #f0fdf4; color: #166534;">
+                Our Mantra: <strong>Zero Tolerance for Bugs</strong>. In a system that helps save lives, technical
+                reliability is an ethical requirement.
+            </div>
+
+            <h3>How We Verify Our App</h3>
+            <ul>
+                <li><strong>Static Analysis:</strong> We use <strong>ESLint</strong> and <strong>TypeScript</strong> to
+                    catch errors *while we are coding*, before the app is even run.</li>
+                <li><strong>Manual Walkthroughs:</strong> Our team performs "End-to-End" tests—simulating a user
+                    creating a request, finding a donor, and completing a match.</li>
+                <li><strong>Edge Case Testing:</strong> We deliberately try to break the app by entering weird data
+                    (like negative unit counts) to see if the validation layers catch it.</li>
+            </ul>
+
+            <h3>Continuous Integration (CI)</h3>
+            <p>Every time a developer pushes code to GitHub, an automated script runs to check if the project still
+                "builds" successfully. If there's a problem, the script stops the process before the broken code can
+                reach any users.</p>
+
+            <h3>User Feedback Loop</h3>
+            <p>We rely on our community of users to report anomalies. If something feels slow or doesn't work as
+                expected, we treat it as a top priority for our next verification cycle.</p>
+        </section>
+    </main>
+</body>
+
+</html>

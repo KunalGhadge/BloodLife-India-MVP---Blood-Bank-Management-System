@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18. Component Structure - BloodLife India</title>
+    <link rel="stylesheet" href="docs.css">
+</head>
+
+<body>
+    <aside>
+        <h1>BLOODLIFE INDIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Back to Index</a></li>
+                <li><a href="internal-api-spec.html">17. Internal API Spec</a></li>
+                <li><a href="component-composition.html" class="active">18. Component Structure</a></li>
+                <li><a href="visualization-heuristics.html">19. Data Visualization</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="doc-content">
+            <h2>18. How the App is Built (Component by Component)</h2>
+            <p>We believe in "Atomic Design." This means we build small, simple pieces (like buttons and inputs) and
+                combine them into larger molecules (like a donor registration form) until we have a full page.</p>
+
+            <div class="jargon-heavy"
+                style="font-family: var(--font-sans); border-left-color: #8b5cf6; background: #f5f3ff; color: #5b21b6;">
+                Principle: <strong>Single Responsibility</strong>. Each component should do exactly one thing and do it
+                well.
+            </div>
+
+            <h3>Our Component Categories</h3>
+            <ul>
+                <li><strong>Layout Components:</strong> These define the structural shell, like the <code>Navbar</code>
+                    and the <code>Sidebar</code> you see on this page.</li>
+                <li><strong>Management Modules:</strong> Large, complex components that handle specific tasks like
+                    <code>DonorManagement</code> or <code>InventoryControl</code>.</li>
+                <li><strong>UI Primitives:</strong> Tiny, reusable bits like <code>Badge</code>, <code>Button</code>,
+                    and <code>Card</code>. These ensure the app looks consistent everywhere.</li>
+            </ul>
+
+            <h3>Data Flow (Props)</h3>
+            <p>Data flows "downwards" from parent components to child components using <strong>Props</strong>. This
+                makes the app predictable—if you want to know where a piece of info came from, you just follow the trail
+                up the component tree.</p>
+
+            <h3>Reusability</h3>
+            <p>Because our components are independent, we can reuse the <code>DonorCard</code> in the "All Donors" list
+                AND in the "Matching Results" list without writing any new code!</p>
+        </section>
+    </main>
+</body>
+
+</html>
