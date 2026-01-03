@@ -1,4 +1,3 @@
-
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { GlassCard } from './ui/GlassCard';
@@ -105,6 +104,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ state, setPath }) => {
           >
             MANAGE INVENTORY
           </button>
+
+          {/* Documentation button - opens absolute Vercel URL in new tab */}
+          <a
+            href="https://blood-life-india-mvp-blood-bank-man.vercel.app/documentation/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 bg-white text-slate-900 rounded-2xl font-black border-2 border-slate-100 hover:border-red-200 transition-all shadow-sm text-base flex items-center gap-2"
+          >
+            VIEW DOCUMENTATION
+          </a>
         </motion.div>
       </section>
 

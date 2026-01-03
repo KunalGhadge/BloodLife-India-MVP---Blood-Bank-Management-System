@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Droplet, Home, Users, ClipboardList, Menu, X, Package } from 'lucide-react';
+import { Droplet, Home, Users, ClipboardList, Menu, X, Package, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
@@ -16,7 +15,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
     { label: 'Donors', path: '/donors', icon: Users },
     { label: 'Requests', path: '/requests', icon: ClipboardList },
     { label: 'Inventory', path: '/inventory', icon: Package },
+    { label: 'Documentation', path: 'https://blood-life-india-mvp-blood-bank-man.vercel.app/documentation/index.html', icon: BookOpen },
   ];
+
+  const isExternal = (p: string) => /^https?:\/\//.test(p);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
@@ -36,7 +38,22 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
 
         <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
-            const isActive = currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path));
+            const isActive = !isExternal(item.path) && (currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path)));
+            if (isExternal(item.path)) {
+              return (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-slate-600 hover:bg-slate-100"
+                >
+                  <item.icon size={18} />
+                  {item.label}
+                </a>
+              );
+            }
+
             return (
               <button
                 key={item.path}
@@ -73,21 +90,39 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
             className="md:hidden glass border-t border-white/10 overflow-hidden"
           >
             <div className="flex flex-col p-4 gap-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.path}
-                  onClick={() => {
-                    setPath(item.path);
-                    setIsMenuOpen(false);
-                  }}
-                  className={`flex items-center gap-3 p-3 rounded-xl ${
-                    currentPath === item.path ? 'bg-red-500/10 text-red-600' : 'text-slate-900'
-                  }`}
-                >
-                  <item.icon size={20} />
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                if (isExternal(item.path)) {
+                  return (
+                    <a
+                      key={item.path}
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-3 p-3 rounded-xl text-slate-900`}
+                    >
+                      <item.icon size={20} />
+                      {item.label}
+                    </a>
+                  );
+                }
+
+                return (
+                  <button
+                    key={item.path}
+                    onClick={() => {
+                      setPath(item.path);
+                      setIsMenuOpen(false);
+                    }}
+                    className={`flex items-center gap-3 p-3 rounded-xl ${
+                      currentPath === item.path ? 'bg-red-500/10 text-red-600' : 'text-slate-900'
+                    }`}
+                  >
+                    <item.icon size={20} />
+                    {item.label}
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         )}

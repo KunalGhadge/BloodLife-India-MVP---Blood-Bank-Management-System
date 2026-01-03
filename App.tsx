@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Dashboard } from './components/Dashboard';
@@ -10,6 +9,7 @@ import { AppState, Donor, BloodRequest, Match, BloodUnit } from './types';
 import { localDb, initializeDb } from './lib/localDb';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
+import { Droplet as DropletIcon } from 'lucide-react';
 
 const App: React.FC = () => {
   const [path, setPath] = useState('/');
@@ -83,30 +83,6 @@ const App: React.FC = () => {
       // Update donor last donation date
       if (donor) {
         updateDonor(donor.id, { lastDonation: new Date().toISOString().split('T')[0] });
-        
-        // AUTO-ADD TO INVENTORY
-        const newUnit: BloodUnit = {
-          id: Date.now() + Math.random(),
-          unitCode: `BLD-IND-${Math.floor(1000 + Math.random() * 9000)}`,
-          bloodGroup: donor.bloodGroup,
-          donorId: donor.id,
-          volumeMl: 450,
-          collectedAt: new Date().toISOString(),
-          expiresAt: new Date(Date.now() + 42 * 24 * 60 * 60 * 1000).toISOString(),
-          storageLocation: "Fridge A / Shelf 1",
-          status: "available",
-          createdAt: new Date().toISOString()
-        };
-        addBloodUnit(newUnit);
-      }
-
-      // Mark Request Done
-      updateRequest(match.requestId, { status: 'completed' });
-      triggerConfetti();
-    } else if (match.status === 'contacted') {
-      const req = state.requests.find(r => r.id === match.requestId);
-      if (req && req.status === 'pending') {
-        updateRequest(match.requestId, { status: 'matched' });
       }
     }
   };
@@ -140,7 +116,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen no-scrollbar">
       <Navbar currentPath={path} setPath={setPath} />
-      
+
       <main className="max-w-7xl mx-auto px-4 pt-24 pb-12">
         <AnimatePresence mode="wait">
           <motion.div
@@ -161,19 +137,30 @@ const App: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center shadow-lg shadow-red-500/20">
                <DropletIcon size={20} color="white" />
             </div>
-            <span className="font-black text-slate-900 text-lg">BloodLife India</span>
+            <div className="flex flex-col">
+              <span className="font-black text-slate-900">BloodLife India</span>
+              <span className="text-xs">Helping connect donors and patients</span>
+            </div>
           </div>
-          <p className="font-bold uppercase tracking-widest text-[10px]">© 2024 VITAL SYSTEMS • SAVING LIVES DROP BY DROP</p>
+
+          <div className="flex items-center gap-6">
+            <a
+              href="https://blood-life-india-mvp-blood-bank-man.vercel.app/documentation/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-slate-600 font-black"
+            >
+              Documentation
+            </a>
+
+            <span>•</span>
+
+            <a className="text-slate-400 hover:text-slate-600" href="https://github.com/KunalGhadge/BloodLife-India-MVP---Blood-Bank-Management-System" target="_blank" rel="noopener noreferrer">Repository</a>
+          </div>
         </div>
       </footer>
     </div>
   );
 };
-
-const DropletIcon = ({ size, color }: { size: number, color: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill={color} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" />
-  </svg>
-);
 
 export default App;
