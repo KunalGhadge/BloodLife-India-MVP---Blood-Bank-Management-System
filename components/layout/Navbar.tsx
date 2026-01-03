@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
     { label: 'Donors', path: '/donors', icon: Users },
     { label: 'Requests', path: '/requests', icon: ClipboardList },
     { label: 'Inventory', path: '/inventory', icon: Package },
-    { label: 'Documentation', path: '/documentation/index.html', icon: BookOpen },
+    { label: 'Documentation', path: 'public/documentation/index.html', icon: BookOpen },
   ];
 
   const isExternal = (p: string) => /^https?:\/\//.test(p);
