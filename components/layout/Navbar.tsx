@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
     { label: 'Donors', path: '/donors', icon: Users },
     { label: 'Requests', path: '/requests', icon: ClipboardList },
     { label: 'Inventory', path: '/inventory', icon: Package },
-    { label: 'Documentation', path: 'https://blood-life-india-mvp-blood-bank-man.vercel.app/documentation/index.html', icon: BookOpen },
+    { label: 'Documentation', path: '/documentation/index.html', icon: BookOpen },
   ];
 
   const isExternal = (p: string) => /^https?:\/\//.test(p);
@@ -39,6 +39,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
         <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = !isExternal(item.path) && (currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path)));
+
+            // Documentation is a static project file served at /documentation/index.html — use an anchor so the browser loads it
+            const isDoc = item.path.startsWith('/documentation');
+
             if (isExternal(item.path)) {
               return (
                 <a
@@ -46,6 +50,19 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
                   href={item.path}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-slate-600 hover:bg-slate-100"
+                >
+                  <item.icon size={18} />
+                  {item.label}
+                </a>
+              );
+            }
+
+            if (isDoc) {
+              return (
+                <a
+                  key={item.path}
+                  href={item.path}
                   className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-slate-600 hover:bg-slate-100"
                 >
                   <item.icon size={18} />
@@ -91,6 +108,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
           >
             <div className="flex flex-col p-4 gap-2">
               {navItems.map((item) => {
+                const isDoc = item.path.startsWith('/documentation');
+
                 if (isExternal(item.path)) {
                   return (
                     <a
@@ -98,6 +117,20 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, setPath }) => {
                       href={item.path}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-3 p-3 rounded-xl text-slate-900`}
+                    >
+                      <item.icon size={20} />
+                      {item.label}
+                    </a>
+                  );
+                }
+
+                if (isDoc) {
+                  return (
+                    <a
+                      key={item.path}
+                      href={item.path}
                       onClick={() => setIsMenuOpen(false)}
                       className={`flex items-center gap-3 p-3 rounded-xl text-slate-900`}
                     >

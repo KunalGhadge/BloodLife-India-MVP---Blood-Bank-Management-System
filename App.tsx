@@ -145,9 +145,7 @@ const App: React.FC = () => {
 
           <div className="flex items-center gap-6">
             <a
-              href="https://blood-life-india-mvp-blood-bank-man.vercel.app/documentation/index.html"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/documentation/index.html"
               className="text-slate-400 hover:text-slate-600 font-black"
             >
               Documentation
@@ -155,7 +153,7 @@ const App: React.FC = () => {
 
             <span>•</span>
 
-            <a className="text-slate-400 hover:text-slate-600" href="https://github.com/KunalGhadge/BloodLife-India-MVP---Blood-Bank-Management-System" target="_blank" rel="noopener noreferrer">Repository</a>
+            <a className="text-slate-400 hover:text-slate-600" href="https://github.com/KunalGhadge/BloodLife-India-MVP---Blood-Bank-Management-System">Repository</a>
           </div>
         </div>
       </footer>
