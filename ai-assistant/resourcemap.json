@@ -1,0 +1,22 @@
+{
+  "site_name": "Demo Project Docs",
+  "pages": [
+    {
+      "url": "/index.html",
+      "title": "Welcome to My Project",
+      "summary": "Introduction to the project including installation and usage instructions.",
+      "content": [
+        {
+          "heading": "Installation",
+          "text": "On Windows, run npm install my-project. On Mac, you might need sudo npm install my-project or use nvm.",
+          "link": "/index.html#installation"
+        },
+        {
+          "heading": "Usage",
+          "text": "To start the project, run npm start. This will launch the application on localhost:3000.",
+          "link": "/index.html#usage"
+        }
+      ]
+    }
+  ]
+}
