@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. Architecture Overview - BloodLife India</title>
+    <link rel="stylesheet" href="docs.css">
+</head>
+
+<body>
+    <aside>
+        <h1>BLOODLIFE INDIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Back to Index</a></li>
+                <li><a href="contribution-protocol.html">03. Contribution Guide</a></li>
+                <li><a href="architecture-overview.html" class="active">04. Architecture Overview</a></li>
+                <li><a href="data-persistence-layer.html">05. Data Persistence</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="doc-content">
+            <h2>04. Understanding the System Architecture</h2>
+            <p>BloodLife India is built as a <strong>Local-First Web Application</strong>. This means the app runs
+                entirely in the user's browser without needing a dedicated backend server for its basic functions. This
+                makes it incredibly fast, private, and reliable in areas with poor internet connection.</p>
+
+            <div class="jargon-heavy"
+                style="font-family: var(--font-sans); border-left-color: #3b82f6; background: #eff6ff; color: #1e40af;">
+                Key Concept: <strong>Client-Dominant Architecture</strong>. The browser does all the "heavy
+                lifting"—from matching blood groups to saving data.
+            </div>
+
+            <h3>The Three Main Layers</h3>
+            <ul>
+                <li><strong>The Visual Interface (UI):</strong> Built with React 19 and Tailwind CSS. It's designed to
+                    be clean, responsive, and easy to use on both mobile and desktop.</li>
+                <li><strong>The Core Logic (The Brain):</strong> Written in TypeScript. This layer handles the donor
+                    matching algorithms and manages the application "state" (what's currently happening in the app).
+                </li>
+                <li><strong>The Storage Layer:</strong> Uses the browser's <code>localStorage</code> to keep your data
+                    safe. Think of it as a small database that lives right inside your Chrome or Firefox browser.</li>
+            </ul>
+
+            <h3>Data Flow</h3>
+            <p>When you add a new donor, the following happens:</p>
+            <ol>
+                <li>The <strong>UI</strong> captures the data and sends it to the <strong>Core Logic</strong>.</li>
+                <li>The <strong>Core Logic</strong> validates the details and updates the app's current memory.</li>
+                <li>The <strong>Storage Layer</strong> immediately saves a copy so that your data is still there when
+                    you refresh the page.</li>
+            </ol>
+        </section>
+    </main>
+</body>
+
+</html>

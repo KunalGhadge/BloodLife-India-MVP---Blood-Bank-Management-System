@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26. Internationalization - BloodLife India</title>
+    <link rel="stylesheet" href="docs.css">
+</head>
+
+<body>
+    <aside>
+        <h1>BLOODLIFE INDIA</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">← Back to Index</a></li>
+                <li><a href="performance-profiling.html">25. Performance Optimization</a></li>
+                <li><a href="i18n-extensibility.html" class="active">26. Internationalization</a></li>
+                <li><a href="dependency-ecosystem.html">27. Dependencies</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <section class="doc-content">
+            <h2>26. Designing for a Global Audience (i18n)</h2>
+            <p>While BloodLife focuses on India, our mission is universal. We have designed the app to be easily
+                translatable into any language, ensuring it can help communities around the world.</p>
+
+            <div class="jargon-heavy"
+                style="font-family: var(--font-sans); border-left-color: #8b5cf6; background: #f5f3ff; color: #5b21b6;">
+                Goal: <strong>Linguistic Inclusion</strong>. Language should never be a barrier to saving a life.
+            </div>
+
+            <h3>How We Prepare for Translations</h3>
+            <ul>
+                <li><strong>Externalized Strings:</strong> We avoid hard-coding text like "Save Donor" directly in the
+                    components. Instead, we use a central file where every piece of text is assigned a unique key.</li>
+                <li><strong>Dynamic Direction:</strong> The layout is designed to support both Left-to-Right (LTR)
+                    languages like Hindi and English, and Right-to-Left (RTL) languages like Arabic or Urdu.</li>
+                <li><strong>Number Formatting:</strong> We use standardized libraries to ensure that dates, times, and
+                    numbers are displayed in the format that feels natural to the user's region.</li>
+            </ul>
+
+            <h3>Our Plan for Indian Languages</h3>
+            <p>Our immediate roadmap includes adding full support for Hindi, Marathi, Bengali, and Tamil. We invite
+                community contributors to help us translate the central language files into their native tongues.</p>
+
+            <h3>Cultural Adaptation</h3>
+            <p>Beyond just translating words, we are careful with colors and symbols. We ensure that our icons and
+                design choices are culturally sensitive and universally understood.</p>
+        </section>
+    </main>
+</body>
+
+</html>
